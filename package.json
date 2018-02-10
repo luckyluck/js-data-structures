@@ -1,0 +1,14 @@
+{
+  "name": "js-data-structures",
+  "version": "1.0.0",
+  "main": "",
+  "repository": "https://github.com/luckyluck/js-data-structures.git",
+  "author": "Alexander <ketov.alex.v@yandex.kz>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^22.2.2"
+  }
+}
