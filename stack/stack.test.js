@@ -21,7 +21,9 @@ describe('Stack test:', function () {
         stack.push(1);
         stack.push(2);
         stack.push(3);
-        expect(stack.pop()).toBe(3);
+        const element = stack.pop();
+        expect(element).toBe(3);
+        expect(stack.length()).toBe(2);
     });
 
     test('test peek()', function () {
