@@ -16,9 +16,20 @@ describe('SinglyLinkedList test:', function () {
         list.add(3);
         const node = list.searchNodeAt(2);
         expect(node.data).toBe(2);
+        expect(list.head.data).toBe(1);
     });
 
-    test('test remove', function () {
+    test('test remove first', function () {
+        const list = new SinglyLinkedList();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        const node = list.remove(1);
+        expect(node.data).toBe(1);
+        expect(list.length()).toBe(2);
+    });
+
+    test('test remove other', function () {
         const list = new SinglyLinkedList();
         list.add(1);
         list.add(2);

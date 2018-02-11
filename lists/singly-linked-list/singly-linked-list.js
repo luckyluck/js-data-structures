@@ -1,13 +1,14 @@
 // Good article to understand the subject
 // https://code.tutsplus.com/articles/data-structures-with-javascript-singly-linked-list-and-doubly-linked-list--cms-23392
+
 function Node(data) {
     this.data = data; // stores a value
     this.next = null; // points to the next node in the list
 }
 
 function SinglyLinkedList() {
-    this._length = 0;
-    this.head = null;
+    this.numberOfValues = 0; // retrieves the number of nodes in a list
+    this.head = null; // assigns a node as the head of a list
 }
 
 SinglyLinkedList.prototype.add = function (value) {
@@ -17,7 +18,7 @@ SinglyLinkedList.prototype.add = function (value) {
     // 1st use-case: an empty list
     if (!currentNode) {
         this.head = node;
-        this._length++;
+        this.numberOfValues++;
 
         return node;
     }
@@ -29,13 +30,13 @@ SinglyLinkedList.prototype.add = function (value) {
 
     currentNode.next = node;
 
-    this._length++;
+    this.numberOfValues++;
 
     return node;
 };
 
 SinglyLinkedList.prototype.searchNodeAt = function(position) {
-    const length = this._length;
+    const length = this.numberOfValues;
     const message = { failure: 'Failure: non-existent node in this list.' };
     let currentNode = this.head;
     let count = 1;
@@ -55,7 +56,7 @@ SinglyLinkedList.prototype.searchNodeAt = function(position) {
 };
 
 SinglyLinkedList.prototype.remove = function(position) {
-    const length = this._length;
+    const length = this.numberOfValues;
     const message = { failure: 'Failure: non-existent node in this list.' };
     let currentNode = this.head;
     let count = 1;
@@ -73,7 +74,7 @@ SinglyLinkedList.prototype.remove = function(position) {
         this.head = currentNode.next;
         deletedNode = currentNode;
         currentNode = null;
-        this._length--;
+        this.numberOfValues--;
 
         return deletedNode;
     }
@@ -88,13 +89,13 @@ SinglyLinkedList.prototype.remove = function(position) {
     beforeNodeToDelete.next = nodeToDelete.next;
     deletedNode = nodeToDelete;
     nodeToDelete = null;
-    this._length--;
+    this.numberOfValues--;
 
     return deletedNode;
 };
 
 SinglyLinkedList.prototype.length = function() {
-    return this._length;
+    return this.numberOfValues;
 };
 
 module.exports = SinglyLinkedList;
