@@ -1,5 +1,6 @@
-// Another linked list implementation
-// Using ES6
+// --- Directions
+// Implement classes Node and Linked Lists
+// See 'directions' document
 
 class Node {
     constructor(data, next = null) {
@@ -14,7 +15,7 @@ class LinkedList {
     }
 
     insertFirst(data) {
-        this.head = new Node(data, this.head);
+        this.insertAt(data, 0);
     }
 
     insertLast(data) {
@@ -40,21 +41,22 @@ class LinkedList {
     }
 
     getFirst() {
-        return this.head;
+        return this.getAt(0);
     }
 
     getLast() {
-        if (!this.head) {
-            return null;
-        }
-
-        let node = this.head;
-
-        while (node.next) {
-            node = node.next;
-        }
-
-        return node;
+        // if (!this.head) {
+        //     return null;
+        // }
+        //
+        // let node = this.head;
+        //
+        // while (node.next) {
+        //     node = node.next;
+        // }
+        //
+        // return node;
+        return this.getAt(this.size() - 1);
     }
 
     getAt(index) {
