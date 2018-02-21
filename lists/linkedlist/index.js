@@ -20,7 +20,7 @@ class LinkedList {
     insertLast(data) {
         const last = this.getLast();
         
-        if (!this.head) {
+        if (this.head) {
             last.next = new Node(data);
         } else {
             this.head = new Node(data, this.head);
@@ -52,6 +52,25 @@ class LinkedList {
         
         while (node.next) {
             node = node.next;
+        }
+        
+        return node;
+    }
+    
+    getAt(index) {
+        if (!this.head) {
+            return null;
+        }
+        
+        let node = this.head;
+        let count = 0;
+        
+        while (count < index) {
+            if (!node.next) {
+                return null;
+            }
+            node = node.next;
+            count++;
         }
         
         return node;
