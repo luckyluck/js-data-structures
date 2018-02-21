@@ -60,7 +60,7 @@ describe('GetLast', () => {
     });
 });
 
-describe.skip('Clear', () => {
+describe('Clear', () => {
     test('empties out the list', () => {
         const l = new List();
         expect(l.size()).toEqual(0);
@@ -74,7 +74,7 @@ describe.skip('Clear', () => {
     });
 });
 
-describe.skip('RemoveFirst', () => {
+describe('RemoveFirst', () => {
     test('removes the first node when the list has a size of one', () => {
         const l = new List();
         l.insertFirst('a');
@@ -82,7 +82,7 @@ describe.skip('RemoveFirst', () => {
         expect(l.size()).toEqual(0);
         expect(l.getFirst()).toEqual(null);
     });
-    
+
     test('removes the first node when the list has a size of three', () => {
         const l = new List();
         l.insertFirst('c');
@@ -97,66 +97,66 @@ describe.skip('RemoveFirst', () => {
     });
 });
 
-describe.skip('RemoveLast', () => {
+describe('RemoveLast', () => {
     test('RemoveLast removes the last node when list is empty', () => {
         const l = new List();
         expect(() => {
             l.removeLast();
         }).not.toThrow();
     });
-    
+
     test('RemoveLast removes the last node when list is length 1', () => {
         const l = new List();
         l.insertFirst('a');
         l.removeLast();
         expect(l.head).toEqual(null);
     });
-    
+
     test('RemoveLast removes the last node when list is length 2', () => {
         const l = new List();
         l.insertFirst('b');
         l.insertFirst('a');
-        
+
         l.removeLast();
-        
+
         expect(l.size()).toEqual(1);
         expect(l.head.data).toEqual('a');
     });
-    
+
     test('RemoveLast removes the last node when list is length 3', () => {
         const l = new List();
         l.insertFirst('c');
         l.insertFirst('b');
         l.insertFirst('a');
         l.removeLast();
-        
+
         expect(l.size()).toEqual(2);
         expect(l.getLast().data).toEqual('b');
     });
 });
 
-describe.skip('InsertLast', () => {
+describe('InsertLast', () => {
     test('adds to the end of the list', () => {
         const l = new List();
         l.insertFirst('a');
-        
+
         l.insertLast('b');
-        
+
         expect(l.size()).toEqual(2);
         expect(l.getLast().data).toEqual('b');
     });
 });
 
-describe.skip('GetAt', () => {
+describe('GetAt', () => {
     test('returns the node at given index', () => {
         const l = new List();
         expect(l.getAt(10)).toEqual(null);
-        
+
         l.insertLast(1);
         l.insertLast(2);
         l.insertLast(3);
         l.insertLast(4);
-        
+
         expect(l.getAt(0).data).toEqual(1);
         expect(l.getAt(1).data).toEqual(2);
         expect(l.getAt(2).data).toEqual(3);
@@ -164,7 +164,7 @@ describe.skip('GetAt', () => {
     });
 });
 
-describe.skip('RemoveAt', () => {
+describe('RemoveAt', () => {
     test('removeAt doesnt crash on an empty list', () => {
         const l = new List();
         expect(() => {
@@ -173,7 +173,7 @@ describe.skip('RemoveAt', () => {
             l.removeAt(2);
         }).not.toThrow();
     });
-    
+
     test('removeAt doesnt crash on an index out of bounds', () => {
         const l = new List();
         expect(() => {
@@ -182,7 +182,7 @@ describe.skip('RemoveAt', () => {
             l.removeAt(1);
         }).not.toThrow();
     });
-    
+
     test('removeAt deletes the first node', () => {
         const l = new List();
         l.insertLast(1);
@@ -193,7 +193,7 @@ describe.skip('RemoveAt', () => {
         l.removeAt(0);
         expect(l.getAt(0).data).toEqual(2);
     });
-    
+
     test('removeAt deletes the node at the given index', () => {
         const l = new List();
         l.insertLast(1);
@@ -204,7 +204,7 @@ describe.skip('RemoveAt', () => {
         l.removeAt(1);
         expect(l.getAt(1).data).toEqual(3);
     });
-    
+
     test('removeAt works on the last node', () => {
         const l = new List();
         l.insertLast(1);
@@ -223,7 +223,7 @@ describe.skip('InsertAt', () => {
         l.insertAt('hi', 0);
         expect(l.getFirst().data).toEqual('hi');
     });
-    
+
     test('inserts a new node with data at the 0 index when the list has elements', () => {
         const l = new List();
         l.insertLast('a');
@@ -235,7 +235,7 @@ describe.skip('InsertAt', () => {
         expect(l.getAt(2).data).toEqual('b');
         expect(l.getAt(3).data).toEqual('c');
     });
-    
+
     test('inserts a new node with data at a middle index', () => {
         const l = new List();
         l.insertLast('a');
@@ -249,7 +249,7 @@ describe.skip('InsertAt', () => {
         expect(l.getAt(3).data).toEqual('c');
         expect(l.getAt(4).data).toEqual('d');
     });
-    
+
     test('inserts a new node with data at a last index', () => {
         const l = new List();
         l.insertLast('a');
@@ -259,13 +259,13 @@ describe.skip('InsertAt', () => {
         expect(l.getAt(1).data).toEqual('b');
         expect(l.getAt(2).data).toEqual('hi');
     });
-    
+
     test('insert a new node when index is out of bounds', () => {
         const l = new List();
         l.insertLast('a');
         l.insertLast('b');
         l.insertAt('hi', 30);
-        
+
         expect(l.getAt(0).data).toEqual('a');
         expect(l.getAt(1).data).toEqual('b');
         expect(l.getAt(2).data).toEqual('hi');
@@ -275,16 +275,16 @@ describe.skip('InsertAt', () => {
 describe.skip('ForEach', () => {
     test('applies a transform to each node', () => {
         const l = new List();
-        
+
         l.insertLast(1);
         l.insertLast(2);
         l.insertLast(3);
         l.insertLast(4);
-        
+
         l.forEach(node => {
             node.data += 10;
         });
-        
+
         expect(l.getAt(0).data).toEqual(11);
         expect(l.getAt(1).data).toEqual(12);
         expect(l.getAt(2).data).toEqual(13);
@@ -295,22 +295,22 @@ describe.skip('ForEach', () => {
 describe.skip('for...of loops', () => {
     test('works with the linked list', () => {
         const l = new List();
-        
+
         l.insertLast(1);
         l.insertLast(2);
         l.insertLast(3);
         l.insertLast(4);
-        
+
         for (let node of l) {
             node.data += 10;
         }
-        
+
         expect(l.getAt(0).data).toEqual(11);
         expect(l.getAt(1).data).toEqual(12);
         expect(l.getAt(2).data).toEqual(13);
         expect(l.getAt(3).data).toEqual(14);
     });
-    
+
     test('for...of works on an empty list', () => {
         const l = new List();
         expect(() => {
