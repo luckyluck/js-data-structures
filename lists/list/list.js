@@ -92,4 +92,77 @@ export default class List {
         this.dataStore = [];
         this.listSize = this.pos = 0;
     }
+    
+    /**
+     * Determing if a Given value is in a list
+     * @param element
+     */
+    contains(element) {
+        for (const item of this.dataStore) {
+            if (item === element) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
+    /**
+     * Moving position to the beginning within a list
+     */
+    front() {
+        this.pos = 0;
+    }
+    
+    /**
+     * Moving position to the end within a list
+     */
+    end() {
+        if (this.listSize > 1) {
+            this.pos = this.listSize - 1;
+        }
+    }
+    
+    /**
+     * Moving position to the previous one within a list
+     */
+    prev() {
+        if (this.pos > 0) {
+            --this.pos;
+        }
+    }
+    
+    /**
+     * Moving position to the next one within a list
+     */
+    next() {
+        if (this.pos < this.listSize - 1) {
+            ++this.pos;
+        }
+    }
+    
+    /**
+     * Returning current position in a list
+     * @returns {number|*}
+     */
+    currPos() {
+        return this.pos;
+    }
+    
+    /**
+     * Moving list's position to the given one
+     * @param position
+     */
+    moveTo(position) {
+        // TODO: what if position is out of list?
+        this.pos = position;
+    }
+    
+    /**
+     * Returning element in the current position
+     * @returns {*}
+     */
+    getElement() {
+        return this.dataStore[this.pos];
+    }
 }
