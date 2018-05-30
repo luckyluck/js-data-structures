@@ -63,4 +63,15 @@ describe('List test:', function () {
         expect(result).toBe(false);
         expect(list.length()).toBe(4);
     });
+    
+    test('test clear', () => {
+        const list = new List();
+        list.append(1);
+        list.append(2);
+        list.append(4);
+        expect(list.length()).toBe(3);
+        
+        list.clear();
+        expect(list.length()).toBe(0);
+    });
 });

@@ -83,4 +83,13 @@ export default class List {
         
         return false;
     }
+    
+    /**
+     * Removing all elements from a list
+     */
+    clear() {
+        delete this.dataStore;
+        this.dataStore = [];
+        this.listSize = this.pos = 0;
+    }
 }
