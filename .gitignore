@@ -1,4 +1,5 @@
 .idea
+.vs-code
 node_modules
 /*_test.js
 /yarn-error.log
