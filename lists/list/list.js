@@ -65,4 +65,22 @@ export default class List {
     toString() {
         return this.dataStore.join(',');
     }
+    
+    /**
+     * Inserting an element into a list
+     * @param element
+     * @param after
+     */
+    insert(element, after) {
+        const insertPos = this.find(after);
+        
+        if (insertPos > -1) {
+            this.dataStore.splice(insertPos + 1, 0, element);
+            ++this.listSize;
+            
+            return true;
+        }
+        
+        return false;
+    }
 }
