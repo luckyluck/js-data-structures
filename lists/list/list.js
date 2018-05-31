@@ -136,7 +136,7 @@ export default class List {
      * Moving position to the next one within a list
      */
     next() {
-        if (this.pos < this.listSize - 1) {
+        if (this.pos < this.listSize) {
             ++this.pos;
         }
     }
