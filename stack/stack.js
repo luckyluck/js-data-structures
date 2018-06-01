@@ -25,4 +25,4 @@ Stack.prototype.print = function () {
     console.log(this.store.join(' '));
 };
 
-module.exports = Stack;
+export default Stack;
