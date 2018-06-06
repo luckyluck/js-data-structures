@@ -47,4 +47,12 @@ export default class Queue {
     empty() {
         return this.dataStore.length === 0;
     }
+    
+    /**
+     * Returning the size of a queue
+     * @returns {number}
+     */
+    count() {
+        return this.dataStore.length;
+    }
 }

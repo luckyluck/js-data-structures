@@ -4,9 +4,9 @@ describe('Queue test:', function () {
     
     test('test enqueue', function () {
         const queue = new Queue();
-        expect(queue.empty()).toBe(true);
+        expect(queue.count()).toBe(0);
         queue.enqueue(1);
-        expect(queue.empty()).toBe(false);
+        expect(queue.count()).toBe(1);
     });
     
     test('test dequeue', function () {
@@ -18,7 +18,7 @@ describe('Queue test:', function () {
         expect(element).toBe(1);
         queue.dequeue();
         queue.dequeue();
-        expect(queue.empty()).toBe(true);
+        expect(queue.count()).toBe(0);
     });
     
     test('test front', function () {
