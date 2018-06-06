@@ -41,4 +41,4 @@ Queue.prototype.isEmpty = function() {
     return this.queue.length === 0;
 };
 
-module.exports = Queue;
+export default Queue;
