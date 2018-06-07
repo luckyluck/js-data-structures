@@ -15,3 +15,7 @@ or via nodemon if you want life reload:
 ```javascript
 nodemon file_path/file_name.js --exec babel-node
 ```
+
+### Repository structure
+Usually, you can find ``challenges`` folder in each structure folder: 
+it contains different additional taks and implementations whicl could be useful to see.
