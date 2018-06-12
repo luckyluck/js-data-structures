@@ -60,7 +60,7 @@ export default class List {
     
     /**
      * Retrieving a list's elements
-     * @returns {Array}
+     * @returns {String}
      */
     toString() {
         return this.dataStore.join(',');
@@ -156,6 +156,28 @@ export default class List {
     moveTo(position) {
         // TODO: what if position is out of list?
         this.pos = position;
+    }
+    
+    /**
+     * Move current node n indexes forward
+     * Move till the end if n bigger than the list
+     * @param n
+     */
+    advance(n) {
+        if (n >= 0 &&  this.pos + n < this.dataStore.length) {
+            this.pos += n;
+        } else {
+            this.pos = this.dataStore.length - 1;
+        }
+    }
+    
+    /**
+     * Move current node n indexes backward
+     * Move till the zero if n bigger than the current pos
+     * @param n
+     */
+    back(n) {
+        this.pos -= n < this.pos ? n : this.pos;
     }
     
     /**

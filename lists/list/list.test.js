@@ -116,4 +116,45 @@ describe('List test:', () => {
         list.front();
         expect(list.currPos()).toBe(0);
     });
+    
+    test('test advance()', function () {
+        const list = new List();
+        list.append(1);
+        list.append(2);
+        list.append(3);
+        list.append(4);
+        list.append(5);
+        list.append(6);
+        list.append(7);
+        list.append(8);
+        list.append(9);
+        list.append(10);
+        
+        list.advance(5);
+        expect(list.getElement()).toBe(6);
+    
+        list.advance(10);
+        expect(list.getElement()).toBe(10);
+    });
+    
+    test('test back()', function () {
+        const list = new List();
+        list.append(1);
+        list.append(2);
+        list.append(3);
+        list.append(4);
+        list.append(5);
+        list.append(6);
+        list.append(7);
+        list.append(8);
+        list.append(9);
+        list.append(10);
+        
+        list.back(5);
+        expect(list.getElement()).toBe(1);
+    
+        list.end();
+        list.back(5);
+        expect(list.getElement()).toBe(5);
+    });
 });
