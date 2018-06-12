@@ -8,14 +8,22 @@ class Node {
         this.next = null;
         this.previous = null;
     }
+}
+
+export default class DLList {
+    constructor() {
+        this.head = new Node('head');
+    }
     
     insert(newElement, item) {
         const newNode = new Node(newElement);
-        const current = this.find(item);
+        const current = this.findLast(item);
     
-        newNode.next = current.next;
-        newNode.previous = current;
-        current.next = newNode;
+        if (current) {
+            newNode.next = current.next;
+            newNode.previous = current;
+            current.next = newNode;
+        }
     }
     
     /**
@@ -23,13 +31,27 @@ class Node {
      * @param item
      * @returns {Node}
      */
-    find(item) {
-        // let currentNode = this.head;
+    findLast(item) {
+        let currentNode = this.head;
         
-        // while (currentNode !== null && currentNode.element !== item) {
-        //     currentNode = currentNode.next;
-        // }
-        //
-        // return currentNode;
+        while (currentNode !== null && currentNode.element !== item) {
+            currentNode = currentNode.next;
+        }
+
+        return currentNode;
+    }
+    
+    /**
+     * Removing node from a list
+     * @param item - item to remove
+     */
+    remove(item) {
+        const currentNode = this.findLast(item);
+        if (currentNode !== null) {
+            currentNode.previous.next = currentNode.next;
+            currentNode.next.previous = currentNode.previous;
+            currentNode.next = null;
+            currentNode.previous = null;
+        }
     }
 }
