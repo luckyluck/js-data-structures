@@ -18,7 +18,8 @@
         "babel-preset-stage-0": "^6.24.1",
         "jest": "^22.2.2",
         "jest-cli": "^23.0.1",
-        "nodemon": "^1.17.5"
+        "nodemon": "^1.17.5",
+        "request": "^2.88.0"
     },
     "jest": {
         "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",

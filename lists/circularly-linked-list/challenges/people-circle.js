@@ -26,24 +26,24 @@ function indicateServivals(n, m) {
     }
     console.log('list1:', list);
     
-    while (amount > m) {
-        let element = 'head';
-        let count = 0;
-        let killed = 0;
-        for (let i = 0; i < amount; i++) {
-            element = list.find(element).element;
-            count++;
-            if (count === m) {
-                list.remove(element);
-                killed++;
-                count = 0;
-            }
-        }
-        console.log('killed:', killed);
-        amount -= killed;
-        killed = 0;
-    }
-    console.log('list2:', list);
+    // while (amount > m) {
+    //     let element = 'head';
+    //     let count = 0;
+    //     let killed = 0;
+    //     for (let i = 0; i < amount; i++) {
+    //         element = list.find(element).element;
+    //         count++;
+    //         if (count === m) {
+    //             list.remove(element);
+    //             killed++;
+    //             count = 0;
+    //         }
+    //     }
+    //     console.log('killed:', killed);
+    //     amount -= killed;
+    //     killed = 0;
+    // }
+    // console.log('list2:', list);
 }
 
 indicateServivals(35, 3);
