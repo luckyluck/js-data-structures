@@ -9,6 +9,10 @@ Stack.prototype.push = function (element) {
 };
 
 Stack.prototype.pop = function () {
+    if (this.top === 0) {
+        return undefined;
+    }
+
     this.top--;
     return this.store.pop();
 };
@@ -17,12 +21,8 @@ Stack.prototype.peek = function () {
     return this.store[this.top - 1];
 };
 
-Stack.prototype.length = function () {
+Stack.prototype.size = function () {
     return this.top;
-};
-
-Stack.prototype.print = function () {
-    console.log(this.store.join(' '));
 };
 
 export default Stack;

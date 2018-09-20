@@ -22,6 +22,9 @@ export default class Stack {
      */
     pop() {
         // My additions to the book's implementation
+        if (this.top === 0) {
+            return undefined;
+        }
         const lastElement = this.dataStore[--this.top];
         this.dataStore.splice(this.top, 1);
         
@@ -40,7 +43,7 @@ export default class Stack {
      * Returning a number of elements in a stack
      * @returns {number}
      */
-    length() {
+    size() {
         return this.top;
     }
     

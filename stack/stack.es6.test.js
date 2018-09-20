@@ -5,15 +5,15 @@ describe('Stack ES6 test:', () => {
     test('test push()', () => {
         const stack = new Stack();
         stack.push(1);
-        expect(stack.length()).toBe(1);
+        expect(stack.size()).toBe(1);
     });
     
-    test('test length()', () => {
+    test('test size()', () => {
         const stack = new Stack();
         stack.push(1);
         stack.push(2);
         stack.push(3);
-        expect(stack.length()).toBe(3);
+        expect(stack.size()).toBe(3);
     });
     
     test('test pop()', () => {
@@ -23,7 +23,7 @@ describe('Stack ES6 test:', () => {
         stack.push(3);
         const element = stack.pop();
         expect(element).toBe(3);
-        expect(stack.length()).toBe(2);
+        expect(stack.size()).toBe(2);
     });
     
     test('test peek()', () => {
@@ -39,9 +39,9 @@ describe('Stack ES6 test:', () => {
         stack.push(1);
         stack.push(2);
         stack.push(3);
-        expect(stack.length()).toBe(3);
+        expect(stack.size()).toBe(3);
         stack.clear();
-        expect(stack.length()).toBe(0);
+        expect(stack.size()).toBe(0);
     });
 });
 
