@@ -14,7 +14,7 @@ Queue.prototype.peek = function () {
     return this.queue[0];
 };
 
-Queue.prototype.length = function () {
+Queue.prototype.size = function () {
     return this.queue.length;
 };
 
@@ -39,6 +39,10 @@ Queue.prototype.toString = function() {
 
 Queue.prototype.isEmpty = function() {
     return this.queue.length === 0;
+};
+
+Queue.prototype.print = function () {
+    console.log(this.queue);
 };
 
 export default Queue;

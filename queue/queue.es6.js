@@ -52,7 +52,14 @@ export default class Queue {
      * Returning the size of a queue
      * @returns {number}
      */
-    count() {
+    size() {
         return this.dataStore.length;
+    }
+
+    /**
+     * Printing queue into the console
+     */
+    print() {
+        console.log(this.queue);
     }
 }

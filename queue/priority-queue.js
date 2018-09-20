@@ -1,14 +1,37 @@
+/**
+ * Priority Queue implementation
+ * In this implementation we stuck to the structure of items to queue/dequeue as object { name, code }
+ * Where name is a value and code is a priority indicator
+ *
+ * As an alternative, we can use Array with 2 elements, where 0 index will contain value and 1 index will contain priority
+ */
 export default class PriorityQueue {
     constructor() {
-        this.dataStore = [];
+        this.collection = [];
     }
     
     /**
-     * Adding element to the end of a queue
-     * @param item
+     * Adding element to the end of a queue due to priority
+     * @param element
      */
-    enqueue(item) {
-        this.dataStore.push(item);
+    enqueue(element) {
+        if (this.isEmpty()) {
+            this.collection.push(element);
+        } else {
+            let added = false;
+            
+            for (let i = 0; i < this.collection.length; i++) {
+                if (element.code < this.collection[i].code) { // checking priorities
+                    this.collection.splice(i, 0, element);
+                    added = true;
+                    break;
+                }
+            }
+
+            if (!added) {
+                this.collection.push(element);
+            }
+        }
     }
     
     /**
@@ -17,20 +40,9 @@ export default class PriorityQueue {
      * @returns {*}
      */
     dequeue() {
-        let priority = this.dataStore[0].code;
-        let index = 0;
+        let element = this.collection.shift();
         
-        for (let i = 1; i < this.dataStore.length; ++i) {
-            if (this.dataStore[i].code < priority) {
-                priority = this.dataStore[i].code;
-                index = i;
-            }
-        }
-        
-        const element = this.dataStore[index];
-        this.dataStore.splice(index, 1);
-        
-        return element;
+        return element.name;
     }
     
     /**
@@ -38,7 +50,7 @@ export default class PriorityQueue {
      * @returns {*}
      */
     front() {
-        return this.dataStore[0];
+        return this.collection[0];
     }
     
     /**
@@ -46,26 +58,33 @@ export default class PriorityQueue {
      * @returns {*}
      */
     back() {
-        return this.dataStore[this.dataStore.length - 1];
+        return this.collection[this.collection.length - 1];
     }
     
     toString() {
-        return this.dataStore.map(data => `${data.name} code: ${data.code}`).join('\n');
+        return this.collection.map(data => `${data.name} code: ${data.code}`).join('\n');
     }
     
     /**
      * Checking if a queue is empty or not
      * @returns {boolean} - true if the queue is empty
      */
-    empty() {
-        return this.dataStore.length === 0;
+    isEmpty() {
+        return this.collection.length === 0;
     }
     
     /**
      * Returning the size of a queue
      * @returns {number}
      */
-    count() {
-        return this.dataStore.length;
+    size() {
+        return this.collection.length;
+    }
+
+    /**
+     * Printing collection (logging into console)
+     */
+    print() {
+        console.log(this.collection);
     }
 }
