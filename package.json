@@ -6,7 +6,8 @@
     "author": "Alexander <ketov.alex.v@yandex.kz>",
     "license": "MIT",
     "scripts": {
-        "test": "jest"
+        "test": "jest",
+        "test:watch": "jest --watch"
     },
     "devDependencies": {
         "babel": "^6.5.2",
