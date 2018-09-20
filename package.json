@@ -16,17 +16,15 @@
         "babel-plugin-transform-runtime": "^6.23.0",
         "babel-preset-es2015": "^6.24.1",
         "babel-preset-stage-0": "^6.24.1",
-        "jest": "^22.2.2",
+        "jest": "^23.6.0",
         "jest-cli": "^23.0.1",
         "nodemon": "^1.17.5",
         "request": "^2.88.0"
     },
     "jest": {
-        "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
-        "testFileExtensions": [
-            "es6",
-            "js"
-        ],
+        "transform": {
+            "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
+        },
         "moduleFileExtensions": [
             "js",
             "json",
