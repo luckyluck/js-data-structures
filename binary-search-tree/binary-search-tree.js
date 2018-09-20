@@ -161,6 +161,132 @@ class BST {
         };
         this.root = removeNode(this.root, data);
     }
+
+    /**
+     * Checking if the Tree is balanced or not
+     *
+     * The Tree is balanced when difference between max and min heights is 1 at most
+     * @returns {boolean}
+     */
+    isBalanced() {
+        return this.findMinHeight() >= this.findMaxHeight() -1;
+    }
+
+    /**
+     * Checking Tree's minimum height (level of the first node without at least one of the children)
+     * @param node - root node at the beginning (auto param)
+     * @returns {*} - integer
+     */
+    findMinHeight(node = this.root) {
+        if (node === null) {
+            return -1;
+        }
+
+        let left = this.findMinHeight(node.left);
+        let right = this.findMinHeight(node.right);
+        if (left < right) {
+            return left + 1;
+        } else {
+            return right + 1;
+        }
+    }
+
+    /**
+     * Checking Tree's minimum height (level of the last node without children)
+     * @param node- root node at the beginning (auto param)
+     * @returns {*} - integer
+     */
+    findMaxHeight(node = this.root) {
+        if (node === null) {
+            return -1;
+        }
+
+        let left = this.findMaxHeight(node.left);
+        let right = this.findMaxHeight(node.right);
+        if (left > right) {
+            return left + 1;
+        } else {
+            return right + 1;
+        }
+    }
+
+    inOrder() {
+        if (this.root === null) {
+            return null;
+        } else {
+            let result = [];
+
+            const traverseInOrder = node => {
+                node.left && traverseInOrder(node.left);
+                result.push(node.data);
+                node.right && traverseInOrder(node.right);
+            };
+
+            traverseInOrder(this.root);
+
+            return result;
+        }
+    }
+
+    preOrder() {
+        if (this.root === null) {
+            return null;
+        } else {
+            let result = [];
+
+            const traversePreOrder = node => {
+                result.push(node.data);
+                node.left && traversePreOrder(node.left);
+                node.right && traversePreOrder(node.right);
+            };
+
+            traversePreOrder(this.root);
+
+            return result;
+        }
+    }
+
+    postOrder() {
+        if (this.root === null) {
+            return null;
+        } else {
+            let result = [];
+
+            const traversePreOrder = node => {
+                node.left && traversePreOrder(node.left);
+                node.right && traversePreOrder(node.right);
+                result.push(node.data);
+            };
+
+            traversePreOrder(this.root);
+
+            return result;
+        }
+    }
+
+    levelOrder() {
+        let result = [];
+        let Q = [];
+
+        if (this.root !== null) {
+            Q.push(this.root);
+
+            while (Q.length > 0) {
+                let node = Q.shift();
+                result.push(node.data);
+                if (node.left !== null) {
+                    Q.push(node.left);
+                }
+                if (node.right !== null) {
+                    Q.push(node.right);
+                }
+            }
+
+            return result;
+        } else {
+            return null;
+        }
+    }
 }
 
 export default BST;
