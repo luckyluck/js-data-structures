@@ -1,7 +1,8 @@
 # JavaScript implementation of data structures
 Used resources:
- - https://www.udemy.com/data-structures-in-javascript/learn/v4/overview
- - http://blog.benoitvallon.com/data-structures-in-javascript/data-structures-in-javascript/
+ - [Data structures in JavaScript (Udemy)](https://www.udemy.com/data-structures-in-javascript/learn/v4/overview)
+ - [Data structures in JavaScript (Ben's Blog)](http://blog.benoitvallon.com/data-structures-in-javascript/data-structures-in-javascript/)
+ - [Data Structures and Algorithms in JavaScript - Full Course for Beginners (FreeCodeCamp)](https://www.freecodecamp.org/news/beaucarnes/data-structures-and-algorithms-in-javascript--EWd2k87)
  - ``Data Structures and Algorithms with JavaScript`` by Michael McMillan
  
 You can find links in some files that I found interesting and useful for understanding
