@@ -1,6 +1,6 @@
 import HashTable from './hash-table';
 
-describe.only('HashTable test', () => {
+describe('HashTable test', () => {
     test('test add() and get()', () => {
         const hashTable = new HashTable();
         hashTable.add('beau', 'person');
