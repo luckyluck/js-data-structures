@@ -122,6 +122,12 @@ MySet.prototype.difference = function (otherSet) {
  * @returns {boolean} - true, if the set is completely contained in the given Set
  */
 MySet.prototype.subset = function (otherSet) {
+    // This is not a required part of the check
+    // But anyway if the set is bigger than otherSat it a priori cannot be a subset of otherSet
+    if (this.size() > otherSet.size()) {
+        return false;
+    }
+
     return this.values().every(function (element) {
         return otherSet.has(element);
     });

@@ -123,6 +123,11 @@ class MySet {
      * @returns {boolean} - true, if the set is completely contained in the given Set
      */
     subset(otherSet) {
+        // This is not a required part of the check
+        // But anyway if the set is bigger than otherSat it a priori cannot be a subset of otherSet
+        if (this.size() > otherSet.size()) {
+            return false;
+        }
         return this.values().every(element => otherSet.has(element));
     };
 }
