@@ -3,25 +3,27 @@
  */
 
 /**
- * Simple hash generator for demonstrative purposes
+ * Hash generator
+ * which uses algorithm known as Horner's method for the better hash
  * @param str - string to insert
  * @param max - maximum numbers of storing buckets
  * @returns {number} - generated hash
  */
 let hash = (str, max) => {
-    let hash = 0;
+    const H = 37; // prime constant
+    let total = 0;
 
     for (let i = 0; i < str.length; i++) {
-        hash += str.charCodeAt(i);
+        total += H * total + str.charCodeAt(i);
     }
 
-    return hash % max;
+    return parseInt(total % max, 10);
 };
 
 class HashTable {
     constructor() {
         this.storage = [];
-        this.storageLimit = 4;
+        this.storageLimit = 137; // a prime number
     }
 
     /**
