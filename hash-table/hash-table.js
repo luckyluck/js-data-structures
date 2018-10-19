@@ -28,6 +28,8 @@ class HashTable {
 
     /**
      * Adding new key:value pair into the table
+     * Uses separate chaining approach to store key:value even in the case of collision
+     * Another approach is linear probing (p 110, Data Structures and Algorithms with JavaScript by Michael McMillan)
      * @param key
      * @param value
      */
