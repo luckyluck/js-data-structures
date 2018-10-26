@@ -6,49 +6,46 @@ class Node {
     }
 }
 
-class BST {
+class BinarySearchTree {
     constructor() {
         this.root = null;
     }
 
     /**
-     * Adding new item into the tree
+     * Inserting new item into the tree
      * @param data - new item
      * @returns {*|void}
      */
-    add(data) {
-        const node = this.root;
-        if (node === null) {
-            this.root = new Node(data);
-            return;
+    insert(data) {
+        const newNode = new Node(data);
+
+        if (this.root === null) {
+            this.root = newNode;
         } else {
-            // Using recursive function to add data
-            const searchTree = function (node) {
-                if (data < node.data) {
-                    if (node.left === null) {
-                        node.left = new Node(data);
-                        return;
-                    } else if (node.left !== null) {
-                        return searchTree(node.left);
-                    }
-                } else if (data > node.data) {
-                    if (node.right === null) {
-                        node.right = new Node(data);
-                        return;
-                    } else if (node.right !== null) {
-                        return searchTree(node.right);
+            let current = this.root;
+            let parent;
+
+            while (true) {
+                parent = current;
+                if (data < parent.data) {
+                    current = parent.left;
+                    if (current === null) {
+                        parent.left = newNode;
+                        break;
                     }
                 } else {
-                    return null;
+                    current = parent.right;
+                    if (current === null) {
+                        parent.right = newNode;
+                        break;
+                    }
                 }
-            };
-
-            return searchTree(node);
+            }
         }
     }
 
     /**
-     * Searching the minimum
+     * Searching the minimum value
      * @returns {*}
      */
     findMin() {
@@ -62,7 +59,7 @@ class BST {
     }
 
     /**
-     * Searching the maximum
+     * Searching the maximum value
      * @returns {*}
      */
     findMax() {
@@ -76,7 +73,7 @@ class BST {
     }
 
     /**
-     * Searching node by value
+     * Searching node by given value
      * @param data
      */
     find(data) {
@@ -210,6 +207,12 @@ class BST {
         }
     }
 
+    /**
+     * Traversing the tree in order
+     * That means that the traversal will visit all of the nodes
+     * of a BST in ascending order of the node key values
+     * @returns {*}
+     */
     inOrder() {
         if (this.root === null) {
             return null;
@@ -226,8 +229,20 @@ class BST {
 
             return result;
         }
+
+        // if (!(node === null)) {
+        //     this.inOrder(node.left);
+        //     this.inOrder(node.right);
+        // }
     }
 
+    /**
+     * Traversing the tree in pre order
+     * That means that the traversal will visit the root node first,
+     * followed by the nodes in the subtrees under the left child of the root node,
+     * followed by the nodes in the subtrees under the right child of the root node.
+     * @returns {*}
+     */
     preOrder() {
         if (this.root === null) {
             return null;
@@ -246,6 +261,14 @@ class BST {
         }
     }
 
+    /**
+     * Traversing the tree in post order
+     * That means that the traversal will visit all of the child nodes
+     * of the left subtree up to the root node,
+     * and then will visit all of the child nodes of the right subtree
+     * up to the root node
+     * @returns {*}
+     */
     postOrder() {
         if (this.root === null) {
             return null;
@@ -289,4 +312,4 @@ class BST {
     }
 }
 
-export default BST;
+export default BinarySearchTree;
