@@ -17,6 +17,7 @@ function Graph(v) {
     this.edges = 0;
     this.adj = [];
     this.marked = []; // an array for DFS purposes
+    this.edgeTo = []; // we'll keep here edges from one vertex to the next one
     for (let i = 0; i < this.vertices; ++i) {
         this.adj[i] = [];
         this.adj[i].push('');
@@ -75,12 +76,42 @@ Graph.prototype.bfs = function (s) {
         if (this.adj[v]) {
             this.adj[v].forEach(w => {
                 if (!this.marked[w]) {
+                    this.edgeTo[w] = v;
                     this.marked[w] = true;
                     queue.push(w);
                 }
             });
         }
     }
+};
+
+/**
+ * Helper function: checking if there is a connection with this vertex
+ * @param v - vertex to check
+ * @returns {*} - true if the connection exists
+ */
+Graph.prototype.hasPathTo = function (v) {
+    return this.marked[v];
+};
+
+/**
+ * Showing the path to the given vertex
+ * @param v
+ */
+Graph.prototype.pathTo = function (v) {
+    if (!this.hasPathTo(v)) {
+        return;
+    }
+
+    const path = [];
+    let source = 0;
+
+    for (let i = v; i !== source; i = this.edgeTo[i]) {
+        path.push(i);
+    }
+    path.push(source);
+
+    return path;
 };
 
 // export default Graph;
