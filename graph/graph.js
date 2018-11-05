@@ -14,6 +14,7 @@
  */
 function Graph(v) {
     this.vertices = v;
+    this.vertexList = [];
     this.edges = 0;
     this.adj = [];
     this.marked = []; // an array for DFS purposes
@@ -39,8 +40,22 @@ Graph.prototype.addEdge = function (v, w) {
 
 Graph.prototype.toString = function () {
     let result = '';
+    const visited = [];
     for (let i = 0; i < this.vertices; ++i) {
-        result += `${i} -> ${this.adj[i].filter(item => item !== '').join(' ')}\n`;
+        result += `${this.vertexList[i]} -> `;
+        // result += `${this.vertexList[i]} -> ${this.adj[i].filter(item => item !== '').join(' ')}\n`;
+        visited.push(this.vertexList[i]);
+
+        for (let j = 0; j < this.vertices; ++j) {
+            if (this.adj[i][j] !== '') {
+                if (!visited.includes(this.vertexList[j])) {
+                    result += `${this.vertexList[j]} `;
+                }
+            }
+        }
+        result += '\n';
+        // FIXME I still don't know what does it mean
+        visited.pop();
     }
 
     return result;
@@ -53,35 +68,36 @@ Graph.prototype.toString = function () {
 Graph.prototype.dfs = function (v) {
     this.marked[v] = true;
 
-    if (this.adj[v]) {
+    if (this.adj[v] !== '') {
         console.log('Visited vertex:', v);
-        this.adj[v].forEach(w => {
-            if (!this.marked[w]) {
-                this.dfs(w);
-            }
-        });
     }
+    this.adj[v].forEach(w => {
+        if (!this.marked[w]) {
+            this.dfs(w);
+        }
+    });
+    // }
 };
 
 Graph.prototype.bfs = function (s) {
-    const queue = [];
+    const queue = [s]; // add to the queue;
     this.marked[s] = true;
-    queue.push(s); // add to the queue;
+    // queue.push(s);
 
     while (queue.length > 0) {
         let v = queue.shift(); // taken first element from the queue and removing it from the queue
-        if (v !== '') {
+        if (typeof v !== 'string') {
             console.log('Visited vertex:', v);
         }
-        if (this.adj[v]) {
+        // if (this.adj[v]) {
             this.adj[v].forEach(w => {
                 if (!this.marked[w]) {
                     this.edgeTo[w] = v;
                     this.marked[w] = true;
-                    queue.push(w);
+                    queue.unshift(w);
                 }
             });
-        }
+        // }
     }
 };
 
@@ -112,6 +128,37 @@ Graph.prototype.pathTo = function (v) {
     path.push(source);
 
     return path;
+};
+
+Graph.prototype.topSort = function () {
+    const stack = [];
+    const visited = [];
+
+    for (let i = 0; i < this.vertices; i++) {
+        visited[i] = false;
+    }
+    for (let i = 0; i < this.vertices; i++) {
+        if (visited[i] === false) {
+            this.topSortHelper(i, visited, stack);
+        }
+    }
+    for (let i = 0; i < stack.length; i++) {
+        if (stack[i] !== undefined && stack[i] !== false) {
+            console.log(this.vertexList[stack[i]]);
+        }
+    }
+};
+
+Graph.prototype.topSortHelper = function (v, visited, stack) {
+    visited[v] = true; // marking vertex as visited
+    if (this.adj[v]) {
+        for (const w of this.adj[v]) {
+            if (!visited[w]) {
+                this.topSortHelper(visited[w], visited, stack);
+            }
+        }
+    }
+    stack.push(v);
 };
 
 // export default Graph;
