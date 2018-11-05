@@ -49,7 +49,7 @@ Graph.prototype.toString = function () {
  * Depth-First Search method
  * @param v - starting vertex
  */
-Graph.prototype.dfs = function(v) {
+Graph.prototype.dfs = function (v) {
     this.marked[v] = true;
 
     if (this.adj[v]) {
@@ -59,6 +59,27 @@ Graph.prototype.dfs = function(v) {
                 this.dfs(w);
             }
         });
+    }
+};
+
+Graph.prototype.bfs = function (s) {
+    const queue = [];
+    this.marked[s] = true;
+    queue.push(s); // add to the queue;
+
+    while (queue.length > 0) {
+        let v = queue.shift(); // taken first element from the queue and removing it from the queue
+        if (v !== '') {
+            console.log('Visited vertex:', v);
+        }
+        if (this.adj[v]) {
+            this.adj[v].forEach(w => {
+                if (!this.marked[w]) {
+                    this.marked[w] = true;
+                    queue.push(w);
+                }
+            });
+        }
     }
 };
 
