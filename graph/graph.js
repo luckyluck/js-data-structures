@@ -16,9 +16,11 @@ function Graph(v) {
     this.vertices = v;
     this.edges = 0;
     this.adj = [];
+    this.marked = []; // an array for DFS purposes
     for (let i = 0; i < this.vertices; ++i) {
         this.adj[i] = [];
         this.adj[i].push('');
+        this.marked[i] = false; // storing all vertices as not yet visited
     }
 }
 
@@ -41,6 +43,23 @@ Graph.prototype.toString = function () {
     }
 
     return result;
+};
+
+/**
+ * Depth-First Search method
+ * @param v - starting vertex
+ */
+Graph.prototype.dfs = function(v) {
+    this.marked[v] = true;
+
+    if (this.adj[v]) {
+        console.log('Visited vertex:', v);
+        this.adj[v].forEach(w => {
+            if (!this.marked[w]) {
+                this.dfs(w);
+            }
+        });
+    }
 };
 
 // export default Graph;
